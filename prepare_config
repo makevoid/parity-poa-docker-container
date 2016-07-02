@@ -1,0 +1,4 @@
+coinbase=$(/build/parity/target/release/parity account list | tail -1)
+echo "Coinbase: $coinbase"
+sed -i s/ADDRESS/0x$coinbase/g config/chain.json
+echo "Coinbase written in chain.json file."

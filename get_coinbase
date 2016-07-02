@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo $(/build/parity/target/release/parity account list | tail -1)

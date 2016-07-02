@@ -1,0 +1,30 @@
+FROM ethcore/parity
+
+RUN apt-get update
+RUN apt-get install -y expect
+
+RUN mkdir /app
+WORKDIR /app
+
+ADD . /app
+# RUN ls ;# change this line to regenerate a new account
+ADD account_new.sh /app
+RUN ./account_new.sh
+
+# this is optional, just to check that the line above ran
+RUN /build/parity/target/release/parity account list
+
+RUN mkdir -p config
+ADD config/chain.json /app/config
+ADD ./prepare_config  /app
+RUN ./prepare_config
+
+# check config (inspect this to see that prepare_config ran successfully, the ADDRESS placeholder should be replaced with your coinbase)
+RUN cat ./config/chain.json
+
+ADD . /app
+
+
+EXPOSE 8545
+
+CMD /build/parity/target/release/parity --chain ./config/chain.json --rpcaddr 0.0.0.0  --password ./config/password --unlock 0000000000000000000000000000000000000000
