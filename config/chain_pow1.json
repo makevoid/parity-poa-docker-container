@@ -34,8 +34,8 @@
 		"extraData": "0x",
 		"gasLimit": "0x2fefd8"
 	},
-	"nodes": [
-
+  "nodes": [
+    "enode://9f9d2cedeee658113c4d6367bd6f28dcfa389882ae5bdc29e1f24b10534f5eb4af4648160a1b9a7502225662569fb64276132a9a39e1cd3f8ece0ee48527a652@0.0.0.0:30303"
   ],
 	"accounts": {
 		"0000000000000000000000000000000000000001": { "balance": "1", "nonce": "1048576", "builtin": { "name": "ecrecover", "pricing": { "linear": { "base": 3000, "word": 0 } } } },
